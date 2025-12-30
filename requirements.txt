@@ -1,0 +1,35 @@
+# Core Dependencies
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+
+# Google AI
+google-generativeai
+langchain-google-genai
+
+# LangChain
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+
+# Embeddings & Vector Store
+sentence-transformers
+langchain-qdrant
+qdrant-client
+
+# Document Processing
+python-docx
+pypdf
+
+# Search & Reranking
+rank-bm25
+
+# Utilities
+requests
+numpy
+scikit-learn
+jinja2
+python-multipart

@@ -1,0 +1,33 @@
+2025-12-25 15:39:02 | INFO | RAG_SEARCH | Session: 47b651d7... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تكلمني عن علاقة  قطر وتركيا؟
+2025-12-25 16:06:13 | INFO | RAG_SEARCH | Session: 52c54c5f... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تكلمني عن العلاقة بين مصر وتركيا ؟
+2025-12-25 16:11:00 | INFO | RAG_SEARCH | Session: ca8373f2... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تقولي العلاقة بين مصر وتركيا ؟
+2025-12-28 10:25:20 | INFO | RAG_SEARCH | Session: cb107309... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تكملني عن الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي؟
+2025-12-28 10:26:51 | INFO | RAG_SEARCH | Session: cb107309... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تكملني عن الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي في استراليا ؟
+2025-12-28 10:27:52 | INFO | RAG_SEARCH | Session: cb107309... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تقولي عدد سكان دول البريكس 2025؟
+2025-12-28 10:29:11 | INFO | RAG_SEARCH | Session: cb107309... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: جدول (1): الإيرادات الضريبية البيئية ونسبتها للناتج المحلي الإجمالي ونسبتها من إجمالي الإيرادات الضر...
+2025-12-28 10:35:49 | INFO | RAG_SEARCH | Session: 779d060c... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي لاستراليا
+2025-12-28 10:36:40 | INFO | RAG_SEARCH | Session: 779d060c... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: وبالنسبة لفرنسا
+2025-12-28 10:38:03 | INFO | RAG_SEARCH | Session: 779d060c... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: لا الايردات الضريبية ونسبتها من الناتج المحلي الاجمالي لاستراليا؟
+2025-12-28 10:39:13 | INFO | RAG_SEARCH | Session: 779d060c... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي لفرنسا
+2025-12-28 10:44:16 | INFO | RAG_SEARCH | Session: 779d060c... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ما هي نسبة تقييد السياسات المالية العالمية في 2023؟
+2025-12-28 10:48:56 | INFO | RAG_SEARCH | Session: 779d060c... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ممكن تقولي احصاءات الايردات في امريكا اللاتينية ومنطقة البحر الكاريبي؟
+2025-12-28 11:00:28 | INFO | RAG_SEARCH | Session: 8b1b5280... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ما هي نسبة تقييد السياسات المالية العالمية من دول العالم في 2023؟
+2025-12-28 11:02:20 | INFO | RAG_SEARCH | Session: 8b1b5280... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: هي نسبة تقييد السياسات المالية العالمية من دول العالم
+2025-12-28 11:12:00 | INFO | RAG_SEARCH | Session: 5d1a8475... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 10 | Query: ما هي نسبة تقييد السياسات المالية العالمية من دول العالم في 2023؟
+2025-12-28 11:30:03 | INFO | RAG_SEARCH | Session: ee6caeba... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 25 | Query: ما هي نسبة تقييد السياسات المالية العالمية من دول العالم في 2023؟
+2025-12-28 11:33:08 | INFO | RAG_SEARCH | Session: 26de8c33... | Method: Hybrid: True, Rerank: True, MMR: True | Results: 35 | Query: ما هي نسبة تقييد السياسات المالية العالمية من دول العالم في 2023؟
+2025-12-28 12:17:52 | INFO | RAG_SEARCH | Session: f175b24d... | Method: Hybrid Search | Results: 40 | Query: الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي لاستراليا
+2025-12-28 12:21:26 | INFO | RAG_SEARCH | Session: f703447c... | Method: Hybrid Search | Results: 40 | Query: الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي لاستراليا
+2025-12-28 12:21:59 | INFO | RAG_SEARCH | Session: f703447c... | Method: Hybrid Search | Results: 40 | Query: ما هي نسبة تقييد السياسات المالية العالمية من دول العالم في 2023؟
+2025-12-28 12:22:31 | INFO | RAG_SEARCH | Session: f703447c... | Method: Hybrid Search | Results: 40 | Query: عدد مشتركين التليفون الثابت في مصر ؟
+2025-12-28 12:23:12 | INFO | RAG_SEARCH | Session: f703447c... | Method: Hybrid Search | Results: 40 | Query: ماهو اجمالي عدد سكان دول البريكس عام 2025؟
+2025-12-28 12:26:19 | INFO | RAG_SEARCH | Session: f703447c... | Method: Hybrid Search | Results: 40 | Query: ماهو اجمالي عدد سكان دول البريكس عام 2025؟
+2025-12-28 12:27:36 | INFO | RAG_SEARCH | Session: 1546ab19... | Method: Hybrid Search | Results: 40 | Query: ماهو اجمالي عدد سكان دول البريكس عام 2025؟
+2025-12-28 12:30:52 | INFO | RAG_SEARCH | Session: bb6dffe8... | Method: Hybrid Search | Results: 40 | Query: ماهو اجمالي عدد سكان دول البريكس عام 2025؟
+2025-12-28 14:05:34 | INFO | RAG_SEARCH | Session: 22ab4ede... | Method: Hybrid Search | Results: 40 | Query: عدد مشتركين التليفون الثابت في مصر ؟
+2025-12-28 14:22:45 | INFO | RAG_SEARCH | Session: d1aa3255... | Method: Hybrid Search | Results: 40 | Query: عدد مشتركين التليفون الثابت في مصر ؟
+2025-12-28 14:30:56 | INFO | RAG_SEARCH | Session: 60ab1026... | Method: Hybrid Search | Results: 40 | Query: الايرادات الضريبية البيئية ونسبتها من الناتج المحلي الاجمالي لاستراليا
+2025-12-30 12:59:59 | INFO | RAG_SEARCH | Session: 114d3371... | Method: Hybrid Search | Results: 40 | Query: عدد مشتركين التليفون الثابت في مصر ؟
+2025-12-30 16:49:09 | INFO | RAG_SEARCH | Session: 2f0818cf... | Method: Hybrid Search | Results: 40 | Query: ممكن توضحلي العلاقة بين مصر وتركيا الفترة الاخيرة ؟
+2025-12-30 16:50:07 | INFO | RAG_SEARCH | Session: 2f0818cf... | Method: Hybrid Search | Results: 40 | Query: عدد مشتركين التليفون الثابت في مصر ؟
+2025-12-30 16:51:07 | INFO | RAG_SEARCH | Session: 2f0818cf... | Method: Hybrid Search | Results: 40 | Query: ماهو عدد سكان دول البريكس 2025؟

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDSC Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IDSC</h2>
+            </div>
+
+            <h3>🎯 Session Management</h3>
+            <div class="session-info">
+                <strong>Current Session:</strong><br>
+                <span id="sessionId">Loading...</span>
+            </div>
+
+            <div class="button-group">
+                <button class="btn" onclick="resetChat()">🔄 Reset Chat</button>
+                <button class="btn" onclick="newSession()">➕ New Session</button>
+            </div>
+
+            <div id="documentsSection" style="display: none;">
+                <hr style="border-color: #333; margin: 20px 0;">
+                <h3>📚 Loaded Documents</h3>
+                <div class="document-list" id="documentList"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="cairo-card">
+                <div class="cairo-title">IDSC Assistant</div>
+                <div class="cairo-sub">
+                    Advanced RAG System | منصة الذكاء الصوتي
+                </div>
+                <div class="cairo-tagline">
+                    Multi-Session Support • Hybrid Search • Powered by Gemini
+                </div>
+            </div>
+
+            <div class="status-box">
+                <h3>🚀 System Status</h3>
+                <div class="status-features" id="statusFeatures">
+                    <span>⏳ Loading...</span>
+                </div>
+                <div class="status-stats" id="statusStats">
+                    <span>📚 Loading documents...</span>
+                    <span>👥 Loading sessions...</span>
+                </div>
+            </div>
+
+            <div class="chat-container" id="chatContainer">
+                <!-- Messages will be added here -->
+            </div>
+
+            <div class="input-area">
+                <textarea 
+                    class="chat-input" 
+                    id="messageInput" 
+                    placeholder="اكتب رسالتك هنا..."
+                    rows="2"
+                    onkeypress="handleKeyPress(event)"
+                ></textarea>
+                <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Use relative URLs - works on any domain/port
+        const API_BASE = '';
+        let currentSessionId = null;
+        let messages = [];
+
+        // Initialize on load
+        window.onload = async () => {
+            await createNewSession();
+            await loadRAGStatus();
+            await loadDocuments();
+        };
+
+        // Create new session
+        async function createNewSession() {
+            try {
+                const response = await fetch(`${API_BASE}/session/create`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                currentSessionId = data.session_id;
+                updateSessionDisplay();
+                console.log('✅ New session created:', currentSessionId);
+            } catch (error) {
+                console.error('Error creating session:', error);
+                currentSessionId = generateUUID();
+                updateSessionDisplay();
+            }
+        }
+
+        // Update session display
+        function updateSessionDisplay() {
+            const sessionElement = document.getElementById('sessionId');
+            if (currentSessionId) {
+                sessionElement.textContent = currentSessionId.substring(0, 8) + '...';
+            }
+        }
+
+        // Load RAG status
+        async function loadRAGStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/rag/status`);
+                const data = await response.json();
+                
+                const featuresHtml = `
+                    <span>${data.features.hybrid_search ? '✅' : '❌'} Hybrid Search</span>
+                `;
+                document.getElementById('statusFeatures').innerHTML = featuresHtml;
+                
+                const statsHtml = `
+                    <span>📚 ${data.document_count} documents</span>
+                    <span>👥 ${data.active_sessions} active sessions</span>
+                `;
+                document.getElementById('statusStats').innerHTML = statsHtml;
+            } catch (error) {
+                console.error('Error loading RAG status:', error);
+            }
+        }
+
+        // Load documents
+        async function loadDocuments() {
+            try {
+                const response = await fetch(`${API_BASE}/documents/list`);
+                const data = await response.json();
+                
+                if (data.documents && data.documents.length > 0) {
+                    document.getElementById('documentsSection').style.display = 'block';
+                    const listHtml = data.documents.map(doc => `
+                        <div class="document-item">📄 ${doc.filename}</div>
+                    `).join('');
+                    document.getElementById('documentList').innerHTML = listHtml;
+                }
+            } catch (error) {
+                console.error('Error loading documents:', error);
+            }
+        }
+
+        // Send message
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to UI
+            addMessage('user', message);
+            input.value = '';
+            
+            // Disable send button
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.disabled = true;
+            
+            // Show loading
+            const loadingId = addLoading();
+            
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        use_rag: true,
+                        session_id: currentSessionId
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // Remove loading
+                removeLoading(loadingId);
+                
+                if (data.success) {
+                    addMessage('assistant', data.response, data.sources);
+                    await loadRAGStatus(); // Update stats
+                } else {
+                    addMessage('assistant', 'عذراً، حدث خطأ: ' + data.response);
+                }
+            } catch (error) {
+                removeLoading(loadingId);
+                addMessage('assistant', 'عذراً، حدث خطأ في الاتصال بالخادم');
+                console.error('Error sending message:', error);
+            } finally {
+                sendBtn.disabled = false;
+            }
+        }
+
+        // Add message to UI
+        function addMessage(role, content, sources = []) {
+            const container = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${role}-message`;
+            
+            let html = `<div class="message-content">${escapeHtml(content)}</div>`;
+            
+            if (sources && sources.length > 0) {
+                const sourcesId = 'sources-' + Date.now();
+                html += `
+                    <button class="sources-toggle" onclick="toggleSources('${sourcesId}')">
+                        📚 المصادر (${sources.length})
+                    </button>
+                    <div class="sources-container" id="${sourcesId}">
+                        ${sources.map((source, idx) => `
+                            <div class="source-item">
+                                <div class="source-header">
+                                    <span class="source-file">📄 ${escapeHtml(source.source)}</span>
+                                    <span class="source-page">📖 صفحة ${source.page}</span>
+                                </div>
+                                <div class="source-content">${escapeHtml(source.content)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            messageDiv.innerHTML = html;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+            
+            messages.push({ role, content, sources });
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Toggle sources visibility
+        function toggleSources(id) {
+            const sourcesDiv = document.getElementById(id);
+            sourcesDiv.classList.toggle('active');
+        }
+
+        // Add loading indicator
+        function addLoading() {
+            const container = document.getElementById('chatContainer');
+            const loadingDiv = document.createElement('div');
+            const loadingId = 'loading-' + Date.now();
+            loadingDiv.id = loadingId;
+            loadingDiv.className = 'loading';
+            loadingDiv.textContent = '🤔 جاري التفكير...';
+            container.appendChild(loadingDiv);
+            container.scrollTop = container.scrollHeight;
+            return loadingId;
+        }
+
+        // Remove loading indicator
+        function removeLoading(id) {
+            const loading = document.getElementById(id);
+            if (loading) loading.remove();
+        }
+
+        // Reset chat
+        async function resetChat() {
+            try {
+                const response = await fetch(`${API_BASE}/session/${currentSessionId}/reset`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    messages = [];
+                    document.getElementById('chatContainer').innerHTML = '';
+                    await loadRAGStatus();
+                    console.log('✅ Chat reset successfully');
+                }
+            } catch (error) {
+                console.error('Error resetting chat:', error);
+            }
+        }
+
+        // New session
+        async function newSession() {
+            messages = [];
+            document.getElementById('chatContainer').innerHTML = '';
+            await createNewSession();
+            await loadRAGStatus();
+            console.log('✅ New session created');
+        }
+
+        // Handle Enter key
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+
+        // Generate UUID
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+    </script>
+</body>
+</html>

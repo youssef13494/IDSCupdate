@@ -1,0 +1,6 @@
+vector_store/
+*.lock
+__pycache__/
+.env
+antenv/
+venv/
