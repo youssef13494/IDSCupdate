@@ -105,7 +105,7 @@ body {
     background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
     border: 2px solid #8C0869;
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px 40px;
     text-align: center;
     box-shadow: 0 0 30px rgba(140, 8, 105, 0.4);
     margin-bottom: 20px;
@@ -113,54 +113,25 @@ body {
 
 .cairo-title {
     color: #8C0869;
-    font-size: 46px;
+    font-size: 36px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .cairo-sub {
     color: #cccccc;
-    margin-top: 10px;
-    font-size: 18px;
+    margin-top: 8px;
+    font-size: 16px;
 }
 
 .cairo-tagline {
     color: #8C0869;
-    margin-top: 15px;
-    font-style: italic;
-}
-
-.status-box {
-    border: 2px dashed #f5c542;
-    border-radius: 14px;
-    padding: 18px;
-    margin-bottom: 20px;
-    text-align: center;
-    background: rgba(20, 20, 20, 0.6);
-}
-
-.status-box h3 {
-    color: #f5c542;
-    margin-bottom: 10px;
-}
-
-.status-features {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-}
-
-.status-stats {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
     margin-top: 10px;
-    color: #8C0869;
+    font-style: italic;
+    font-size: 14px;
 }
 
-/* Chat Container */
+/* Chat Container - زيادة المساحة */
 .chat-container {
     flex: 1;
     overflow-y: auto;
@@ -168,6 +139,8 @@ body {
     background: #0f0f0f;
     border-radius: 10px;
     margin-bottom: 20px;
+    /* إضافة حد أدنى للارتفاع */
+    min-height: 400px;
 }
 
 .chat-message {
@@ -341,5 +314,8 @@ body {
     }
     .cairo-title {
         font-size: 28px;
+    }
+    .cairo-card {
+        padding: 20px;
     }
 }

@@ -44,16 +44,7 @@
                 </div>
             </div>
 
-            <div class="status-box">
-                <h3>🚀 System Status</h3>
-                <div class="status-features" id="statusFeatures">
-                    <span>⏳ Loading...</span>
-                </div>
-                <div class="status-stats" id="statusStats">
-                    <span>📚 Loading documents...</span>
-                    <span>👥 Loading sessions...</span>
-                </div>
-            </div>
+            <!-- تم إزالة status-box من هنا -->
 
             <div class="chat-container" id="chatContainer">
                 <!-- Messages will be added here -->
@@ -81,7 +72,6 @@
         // Initialize on load
         window.onload = async () => {
             await createNewSession();
-            await loadRAGStatus();
             await loadDocuments();
         };
 
@@ -107,27 +97,6 @@
             const sessionElement = document.getElementById('sessionId');
             if (currentSessionId) {
                 sessionElement.textContent = currentSessionId.substring(0, 8) + '...';
-            }
-        }
-
-        // Load RAG status
-        async function loadRAGStatus() {
-            try {
-                const response = await fetch(`${API_BASE}/rag/status`);
-                const data = await response.json();
-                
-                const featuresHtml = `
-                    <span>${data.features.hybrid_search ? '✅' : '❌'} Hybrid Search</span>
-                `;
-                document.getElementById('statusFeatures').innerHTML = featuresHtml;
-                
-                const statsHtml = `
-                    <span>📚 ${data.document_count} documents</span>
-                    <span>👥 ${data.active_sessions} active sessions</span>
-                `;
-                document.getElementById('statusStats').innerHTML = statsHtml;
-            } catch (error) {
-                console.error('Error loading RAG status:', error);
             }
         }
 
@@ -187,7 +156,6 @@
                 
                 if (data.success) {
                     addMessage('assistant', data.response, data.sources);
-                    await loadRAGStatus(); // Update stats
                 } else {
                     addMessage('assistant', 'عذراً، حدث خطأ: ' + data.response);
                 }
@@ -277,7 +245,6 @@
                 if (response.ok) {
                     messages = [];
                     document.getElementById('chatContainer').innerHTML = '';
-                    await loadRAGStatus();
                     console.log('✅ Chat reset successfully');
                 }
             } catch (error) {
@@ -290,7 +257,6 @@
             messages = [];
             document.getElementById('chatContainer').innerHTML = '';
             await createNewSession();
-            await loadRAGStatus();
             console.log('✅ New session created');
         }
 

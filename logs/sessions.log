@@ -208,3 +208,27 @@
 2025-12-30 18:04:21 | INFO | GeminiRAGChat initializing...
 2025-12-30 18:04:26 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 0 | RAG Enabled: True
 2025-12-30 18:04:26 | INFO | GeminiRAGChat initialized successfully
+2025-12-31 09:20:46 | INFO | SessionManager initialized
+2025-12-31 09:20:46 | INFO | GeminiRAGChat initializing...
+2025-12-31 09:20:56 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 0 | RAG Enabled: True
+2025-12-31 09:20:56 | INFO | GeminiRAGChat initialized successfully
+2025-12-31 09:20:58 | INFO | SESSION_CREATED | ID: 4cfe69ea... | Metadata: {"status": "new", "total_sessions": 1}
+2025-12-31 09:20:58 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 1 | RAG Enabled: True
+2025-12-31 09:21:58 | INFO | SESSION_CREATED | ID: 2dc8e0ea... | Metadata: {"status": "new", "total_sessions": 2}
+2025-12-31 09:21:58 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 2 | RAG Enabled: True
+2025-12-31 09:22:00 | INFO | SESSION_CREATED | ID: 5366f38a... | Metadata: {"status": "new", "total_sessions": 3}
+2025-12-31 09:22:00 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 3 | RAG Enabled: True
+2025-12-31 09:22:26 | INFO | SessionManager initialized
+2025-12-31 09:22:26 | INFO | GeminiRAGChat initializing...
+2025-12-31 09:22:37 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 0 | RAG Enabled: True
+2025-12-31 09:22:37 | INFO | GeminiRAGChat initialized successfully
+2025-12-31 09:22:38 | INFO | SESSION_CREATED | ID: b52c2030... | Metadata: {"status": "new", "total_sessions": 1}
+2025-12-31 09:22:38 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 1 | RAG Enabled: True
+2025-12-31 09:27:16 | INFO | SESSION_CREATED | ID: 6543197e... | Metadata: {"status": "new", "total_sessions": 2}
+2025-12-31 09:27:16 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 2 | RAG Enabled: True
+2025-12-31 09:27:18 | INFO | SESSION_CREATED | ID: dac45f9c... | Metadata: {"status": "new", "total_sessions": 3}
+2025-12-31 09:27:18 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 3 | RAG Enabled: True
+2025-12-31 09:33:29 | INFO | SessionManager initialized
+2025-12-31 09:33:29 | INFO | GeminiRAGChat initializing...
+2025-12-31 09:33:43 | INFO | SYSTEM_STATUS | Documents: 2795 | Active Sessions: 0 | RAG Enabled: True
+2025-12-31 09:33:43 | INFO | GeminiRAGChat initialized successfully
